@@ -8,12 +8,24 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
   end
 
-  def edit
-    @book = Book.find(params[:id])
+  def by_genre
+    Book.find_by_genre(params[:genre])
   end
 
   def new
     @book = Book.new
+  end
+
+  def edit
+    @book = Book.find(params[:id])
+  end
+
+
+  def destroy
+    @book = Book.find(params[:id])
+    @book.destroy
+
+    redirect_to books_path
   end
 
   def create
@@ -22,6 +34,15 @@ class BooksController < ApplicationController
       redirect_to @book
     else
       render 'new'
+    end
+  end
+
+  def update
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to @book
+    else
+      render 'edit'
     end
   end
 

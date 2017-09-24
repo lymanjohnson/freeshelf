@@ -1,51 +1,6 @@
+
 <h1>Edit Book</h1>
 
-<%= form_with(model: @book) do |form| %>
+<%= render 'form' %>
 
-  <% if @book.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@book.errors.count, "error") %> prohibted
-        this book from being saved:
-      </h2>
-      <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
-  <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-  </p>
-
-  <p>
-    <%= form.label :author %><br>
-    <%= form.text_field :author %>
-  </p>
-
-  <p>
-    <%= form.label :year %><br>
-    <%= form.text_field :year %>
-  </p>
-
-  <p>
-    <%= form.label :genre %><br>
-    <%= form.text_field :genre %>
-  </p>
-
-  <p>
-    <%= form.label :description %><br>
-    <%= form.text_area :description %>
-  </p>
-
-  <p>
-    <%= form.submit %>
-  </p>
-
-<% end %>
-
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', books_path %>
